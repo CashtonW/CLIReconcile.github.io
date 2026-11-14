@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CLI Reconcile</title><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header><div class="brand"><span class="mark">✓</span><span>CLI <b>RECONCILE</b></span></div><div class="header-note">Payroll exception workspace <span class="dot"></span> local, private processing</div></header>
+  <main>
+    <section class="hero"><div><p class="eyebrow">BI-WEEKLY PAYROLL REVIEW</p><h1>Bring schedule and time<br>into one clear picture.</h1><p class="lede">Upload one When I Work schedule and every PRS time card. We’ll find the shifts that need a closer look.</p></div><aside class="how"><b>How matching works</b><p>Employee names, work date, clock times, and total hours are compared. A 15-minute time tolerance and a 6-minute hours tolerance prevent unnecessary flags.</p></aside></section>
+    <section class="upload-grid three" id="uploads">
+      <label class="drop-zone" id="schedule-zone"><input id="schedule-file" type="file" accept=".csv,text/csv"><span class="file-icon">▤</span><b>Schedule export</b><small>When I Work CSV • one file</small><em id="schedule-name">Choose schedule file</em></label>
+      <label class="drop-zone" id="time-zone"><input id="timesheet-files" type="file" accept=".csv,text/csv" multiple><span class="file-icon">◷</span><b>Time card exports</b><small>PRS Timekeeping CSV • multiple files</small><em id="timesheet-name">Choose one or more time cards</em></label>
+      <label class="drop-zone" id="lookup-zone"><input id="lookup-file" type="file" accept=".csv,text/csv"><span class="file-icon">⌁</span><b>Employee lookup</b><small>PRS code / email lookup • optional</small><em id="lookup-name">Choose lookup file</em></label>
+    </section>
+    <div class="actions"><button id="run" disabled>Compare records <span>→</span></button><button class="secondary" id="demo">Load sample files</button><p id="file-status">Add the two export types to begin.</p></div>
+    <section class="results hidden" id="results">
+      <div class="results-head"><div><p class="eyebrow">RECONCILIATION RESULTS</p><h2>Exceptions needing review</h2><p id="summary">—</p></div><div><button class="secondary" id="download">Download exceptions CSV</button><button class="link-button" id="reset">Start over</button></div></div>
+      <div class="cards" id="cards"></div>
+      <div class="toolbar"><div class="filters" id="filters"><button class="active" data-filter="all">All <span id="all-count">0</span></button><button data-filter="high">High priority <span id="high-count">0</span></button><button data-filter="hours">Hours mismatch <span id="hours-count">0</span></button><button data-filter="missing">Missing time <span id="missing-count">0</span></button></div><label class="search">⌕ <input id="search" placeholder="Search employee, date, or service"></label></div>
+      <div class="table-wrap"><table><thead><tr><th>Priority</th><th>Employee</th><th>Work date</th><th>Exception</th><th>Scheduled</th><th>Actual</th><th>Details</th></tr></thead><tbody id="exception-body"></tbody></table></div>
+      <p class="footnote">Review flags are decision support, not payroll edits. Confirm exceptions against source records before making changes.</p>
+    </section>
+    <section class="empty-state" id="empty"><span>↗</span><h2>Ready when you are</h2><p>Nothing is uploaded to a server. Files stay in this browser window.</p></section>
+  </main><footer>Community Living, Inc. • Reconciliation prototype • v1.0</footer>
+  <script src="app.js"></script>
+</body></html>
